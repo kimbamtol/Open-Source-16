@@ -1,59 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Header from './Header';
 import Body from './Body';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-export default class Task extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [],
+export default function Task(props) {
+  const [todos, setTodos] = useState([]);
+
+  const STORAGE_KEY = props.name;
+
+  // 첫 렌더링 시 저장소에서 todos 가져오기
+  useEffect(() => {
+    const getTodos = async () => {
+      try {
+        const respTodos = await AsyncStorage.getItem(STORAGE_KEY);
+        setTodos(JSON.parse(respTodos) ?? []);
+      } catch (e) {
+        console.log(e);
+      }
     };
-  }
+    getTodos();
+  }, []);
 
-  addTodo = (todoText) => {
+  // todos 변경 시 저장소에 todos 저장하기
+  useEffect(() => {
+    const storeTodos = async () => {
+      try {
+        const jsonTodos = JSON.stringify(todos);
+        await AsyncStorage.setItem(STORAGE_KEY, jsonTodos);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    if (todos.length > 0) storeTodos();
+  }, [todos]);
+
+  const addTodo = (todoText) => {
     const newTodo = {
       id: Date.now(),
       text: todoText,
       completed: false,
     };
 
-    this.setState((prevState) => ({
-      todos: [newTodo, ...prevState.todos],
-    }));
+    setTodos((prevTodos) => [newTodo, ...prevTodos]);
   };
 
-  checkTodo = (id) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.map((todo) => {
+  const checkTodo = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
         if (todo.id === id) {
           return { ...todo, completed: !todo.completed };
         }
         return todo;
-      }),
-    }));
-  };
-
-  deleteTodo = (id) => {
-    this.setState((prevState) => ({
-      todos: prevState.todos.filter((todo) => todo.id !== id),
-    }));
-
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Todo App</Text>
-        <Header addTodo={this.addTodo} />
-        <Body todos={this.state.todos} checkTodo={this.checkTodo} deleteTodo={this.deleteTodo} />
-      </View>
+      })
     );
-  }
+  };
+
+  const deleteTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Todo App</Text>
+      <Header addTodo={addTodo} />
+      <Body todos={todos} checkTodo={checkTodo} deleteTodo={deleteTodo} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
