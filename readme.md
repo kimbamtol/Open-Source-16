@@ -1,9 +1,8 @@
 
-오픈소프트웨어 레포지토리입니다.
-<img src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat&logo=React&logoColor=white"/>
+오픈소프트웨어 개발  16조의 레포지터리 입니다.
+![Alt text]()
+===================
 
-
-alarm 폴더에 리액트 네이티브가 있습니다
 
 alarm 폴더에서 디팬던시 다운 받으시고 android 폴더
 
