@@ -1,10 +1,14 @@
 # 오픈소프트웨어개발 16조 레포지토리입니다.
 
+
 <img src="./alarm/imageCanForReadme/logo.jpeg"  width="200" alt="logo">
 
 <img src="https://img.shields.io/badge/React Native-61DAFB?style=for-the-badge&logo=&logoColor=white">
 <img src="https://img.shields.io/badge/Android Studio-3DDC84?style=for-the-badge&logo=&logoColor=white">
 <img src="https://img.shields.io/badge/expo-000020?style=for-the-badge&logo=&logoColor=white">
+
+오픈소프트웨어 개발  16조의 레포지터리 입니다.
+
 
 ## Introduction
 
