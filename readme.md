@@ -1,5 +1,7 @@
 
 오픈소프트웨어 레포지토리입니다.
+<img src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat&logo=React&logoColor=white"/>
+
 
 alarm 폴더에 리액트 네이티브가 있습니다
 
