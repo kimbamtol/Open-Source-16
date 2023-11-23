@@ -26,29 +26,57 @@ Wifi Reminder는 사용자의 다양한 조건에 맞춰 유연한 일정관리,
 
 ## how to develop
 
+### for Anround
+
 ```
     git clone https://github.com/kimbamtol/Open-Source-16.git
+    cd Open-Source-16
+    cd alarm
+    npm install
+    npx react-native start 
 ```
-
-### for Anround
 
 안드로이드 스튜디오가 다운로드 되어 있어야 합니다.  
 [Android Studio](https://developer.android.com/studio?gclid=CjwKCAiAx_GqBhBQEiwAlDNAZrEuY5uKb6-zGLpf4XJco0gLqfaAQxA61ZUer-XsdQ34_ErE9PGV0RoCjX8QAvD_BwE&gclsrc=aw.ds&hl=ko "Android")
+    
+    그 후 에러가 난다면, 아래의 명령어들을 차례로 입력합니다.
 
 ```
-    npm i  // 필요한 dependenies들을 다운받아 줍니다
-    npm run android
+    npm install @react-native-firebase/app
+    npm install @react-native-firebase/firestore
+    npm install @react-native-community/netinfo
+    npm install @react-native-clipboard/clipboard
+    npm install @react-native-firebase/messaging
+    npm install react-native-push-notification
+
+	npx react-native start 
+
 ```
 
 error 가 발생한다면, gradle 과 java sdk의 버전을 맞춰주는 것이 필요합니다.  
 [Gradle version config](https://docs.gradle.org/current/userguide/compatibility.html#:~:text=A%20Java%20version%20between%208,versions%20are%20not%20yet%20supported. "gradle")
 
-local.properties에서 /taekyoung/을 본인 유저 이름으로 바꾸시고
-npm run android 하면 실행 될겁니다 (mac기준)
 
 ### for IOS
 
 준비중...
+
+
+## how to install 
+
+앱 다운로드 후 회원가입 후 로그인   
+알람 기능 활용    
+   
+- Main 버튼: WIFI를 기반으로 한 알람 설정   
+- Enter new todo에 할일은 추가합니다.   
+- 화면의 하단에 있는 CHECK WIFI-IP 버튼을 누를경우, 현재 연결된 WIFI의 IP값이 클립보드에 복사됩니다.(WIFI에 연결이 되었을 경우에만 클립보드에 복사됩니다.)    
+- 추가한 ‘할일’의 오른쪽에 있는 WIFI 모양의 아이콘을 클릭하여 같이 저장하고 싶은 WIFI의 IP값을 저장할 수 있습니다. (조금전에 복사한 값을 이용)   
+- WIFI의 변경이 감지되면, 변경된 WIFI의 IP와 ‘할일’들에 저장된 WIFI IP값을 비교하고, 일치하는 ‘할일’을 notification으로 사용자에게 알립니다.    
+- notification은 백그라운드 상태에서 작동합니다.     
+- Weather 버튼: 날씨 확인     
+
+#### -앱 다운로드 링크	https://drive.google.com/file/d/1U811auUeVYsyz-s6K5ZjfIBPzLX989ms/view?usp=sharing
+
 
 ## Feature
 
