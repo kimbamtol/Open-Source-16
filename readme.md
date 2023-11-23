@@ -95,7 +95,8 @@ error 가 발생한다면, gradle 과 java sdk의 버전을 맞춰주는 것이 
 
 ### ToDo
 
-<img src="./alarm/imageCanForReadme/toDo.png" width="150px">
+<img src="./alarm/imageCanForReadme/Screenshot 2023-11-23 at 7.26.24 PM.png" width="150px">
+<img src="./alarm/imageCanForReadme/Screenshot 2023-11-23 at 7.26.28 PM.png" width="150px">
 
 와이파이 이름을 감지하여 발동하는 알람을 설정할 수 있습니다.  
 추후에 더 많은 설정 요소들이 추가 될 예정입니다.
