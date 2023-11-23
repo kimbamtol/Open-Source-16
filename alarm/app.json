@@ -5,7 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "1dc7fd71-cc2d-49aa-a309-82b34d1e4140"
+      }
+    }
   },
   "name": "alarm"
 }
