@@ -8,15 +8,13 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import messaging from '@react-native-firebase/messaging';
 import PushNotification from 'react-native-push-notification';
 
-const Task = (props) => {
+const Task = () => {
   const [todos, setTodos] = useState([]);
   const [currentip, setCurrentip] = useState('');
   const [wifiIp, setWifiIp] = useState('');
 
-  const storage_key = props.name;
-
   const firestore = getFirestore();
-  const todosCollection = collection(firestore, storage_key);
+  const todosCollection = collection(firestore, 'todos');
 
   const getTodos = async () => {
     try {
@@ -62,11 +60,15 @@ const Task = (props) => {
             console.log('Matching Todos:', matchingTodos);
 
             // 일치하는 할일이 있다면 알림 전송
+            // 기존에 ip값 일치하는 할일이 여러개 있으면, 하나만 notify했는데
+            // 전부 notify하는 것으로 수정했습니다.
             if (matchingTodos.length > 0) {
-              const todoText = matchingTodos[0].text; // 여기에서는 첫 번째 일치하는 할일의 텍스트를 가져옴
-              // push notification
-              PushNotification.localNotification({
-                message: `할 일 알림 : ${todoText}`,
+              matchingTodos.forEach((todo) => {
+                const todoText = todo.text;
+                // push notification
+                PushNotification.localNotification({
+                  message: `할 일 알림 : ${todoText}`,
+                });
               });
             }
           } catch (error) {
