@@ -8,13 +8,15 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import messaging from '@react-native-firebase/messaging';
 import PushNotification from 'react-native-push-notification';
 
-const Task = () => {
+const Task = (props) => {
   const [todos, setTodos] = useState([]);
   const [currentip, setCurrentip] = useState('');
   const [wifiIp, setWifiIp] = useState('');
 
+  const storage_key = props.name;
+
   const firestore = getFirestore();
-  const todosCollection = collection(firestore, 'todos');
+  const todosCollection = collection(firestore, storage_key);
 
   const getTodos = async () => {
     try {
